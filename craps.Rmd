@@ -7,5 +7,35 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+
 ```
+
+
+# Functions We Need
+
+```{r}
+# dice = c(1:6)
+# sample(dice, 1)
+
+sample(x = 1:6, 1)
+
+roll_one_die <- function(){
+  sample(x=1:6, 1)
+}
+
+roll_two_dice <- function() {
+  roll_one_die() + roll_one_die()
+}
+```
+
+```{r}
+thousand_rolls <- tibble(map_int(1:1000, ~ roll_two_dice())) 
+
+
+hist(thousand_rolls)
+```
+
+
 
