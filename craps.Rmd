@@ -31,11 +31,17 @@ roll_two_dice <- function() {
 ```
 
 ```{r}
-thousand_rolls <- tibble(map_int(1:1000, ~ roll_two_dice())) 
+x <- tibble(results = map_int(1:100000, ~ roll_two_dice()))
 
 
-hist(thousand_rolls)
+# x %>%
+#   ggplot
+ggplot(x, aes(x=results)) + 
+  geom_bar()
 ```
 
+```{r}
+rbinom(6,size=6,prob=8/36)
+```
 
 
